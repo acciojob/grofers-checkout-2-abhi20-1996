@@ -1,11 +1,14 @@
-//your code here
-let tableEl=document.getElemrntById("myTable");
-let priceArr=Array.from(document..querySelectorAll("td[data-ns-test]"));
+let tableEl = document.getElementById('myTable');
+let priceArr = Array.from(document.querySelectorAll("td[data-ns-test]"));
+// console.log(priceArr);
 let totalPrice = 0;
-for (let i = 0; i < priceArr.length; i++) {
-	totalPrice+=priceArr[i];
+for (const priceOfEachItem of priceArr) {
+  totalPrice += Number(priceOfEachItem.textContent);
 }
-let totalRow=document.creatElement("tr");
-let newCell=totalRow.insertCell(0);
-totalRow.setAttribute('data-ns-test', 'grandTotal');
+
+let totalRow = document.createElement('tr');
+let newcell = totalRow.insertCell(0);
+newcell.textContent = totalPrice
+totalRow.setAttribute('data-ns-test', 'grandTotal')
+
 tableEl.insertAdjacentElement('beforeend', totalRow);
